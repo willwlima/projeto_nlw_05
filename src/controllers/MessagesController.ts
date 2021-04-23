@@ -4,7 +4,7 @@ import { MessagesService } from "../services/MessagesService";
 
 class MessagesController {
 
-  async create(request: Request, response: Response) {
+  async create(request: Request, response: Response): Promise<Response> {
     const { admin_id, text, user_id } = request.body;
     const messagesService = new MessagesService();
 
@@ -18,14 +18,14 @@ class MessagesController {
   }
 
   // localhost:3333/messages/idDoUsuario
-  async showByUser(request: Request, response: Response) {
+  async showByUser(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
     const messagesService = new MessagesService();
 
-    const list = await messagesService.listByUser(id);
+    const messages = await messagesService.listByUser(id);
 
-    return response.json(list);
+    return response.json(messages);
   }
 }
 

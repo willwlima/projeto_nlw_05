@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { User } from "./User";
 
 @Entity("messages")
-class Message{
+class Message {
 
   @PrimaryColumn()
   id: string;
@@ -25,13 +25,9 @@ class Message{
   created_at: Date;
 
   constructor() {
-    if(!this.id) {
+    if (!this.id)
       this.id = uuid();
-    }
   }
-
-
-
 }
 
 export { Message }
